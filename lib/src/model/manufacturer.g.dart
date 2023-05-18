@@ -9,7 +9,7 @@ part of 'manufacturer.dart';
 ManufacturerResponse _$ManufacturerResponseFromJson(
         Map<String, dynamic> json) =>
     ManufacturerResponse(
-      manufacturers: (json['manufacturers'] as List<dynamic>)
+      items: (json['manufacturers'] as List<dynamic>)
           .map((e) => Manufacturer.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,7 +17,7 @@ ManufacturerResponse _$ManufacturerResponseFromJson(
 Map<String, dynamic> _$ManufacturerResponseToJson(
         ManufacturerResponse instance) =>
     <String, dynamic>{
-      'manufacturers': instance.manufacturers,
+      'manufacturers': instance.items,
     };
 
 Manufacturer _$ManufacturerFromJson(Map<String, dynamic> json) => Manufacturer(

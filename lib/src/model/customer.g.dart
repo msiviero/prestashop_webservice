@@ -8,14 +8,14 @@ part of 'customer.dart';
 
 CustomerResponse _$CustomerResponseFromJson(Map<String, dynamic> json) =>
     CustomerResponse(
-      customers: (json['customers'] as List<dynamic>)
+      items: (json['customers'] as List<dynamic>)
           .map((e) => Customer.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$CustomerResponseToJson(CustomerResponse instance) =>
     <String, dynamic>{
-      'customers': instance.customers,
+      'customers': instance.items,
     };
 
 Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(

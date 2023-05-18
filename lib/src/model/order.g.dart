@@ -8,14 +8,14 @@ part of 'order.dart';
 
 OrderResponse _$OrderResponseFromJson(Map<String, dynamic> json) =>
     OrderResponse(
-      orders: (json['orders'] as List<dynamic>)
+      items: (json['orders'] as List<dynamic>)
           .map((e) => Order.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$OrderResponseToJson(OrderResponse instance) =>
     <String, dynamic>{
-      'orders': instance.orders,
+      'orders': instance.items,
     };
 
 Order _$OrderFromJson(Map<String, dynamic> json) => Order(

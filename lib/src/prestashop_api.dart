@@ -25,7 +25,7 @@ class PrestashopApi with UiLoggy {
     final payload = await _doGet(
       '${_conf.webserviceUrl}/api/customers?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
     );
-    return CustomerResponse.fromJson(payload).customers;
+    return CustomerResponse.fromJson(payload).items;
   }
 
   Future<Optional<Customer>> customer(final int id) async {
@@ -35,7 +35,7 @@ class PrestashopApi with UiLoggy {
     );
     return payload == null
         ? Optional.absent()
-        : Optional.of(CustomerResponse.fromJson(payload).customers.single);
+        : Optional.of(CustomerResponse.fromJson(payload).items.single);
   }
 
   /* Categories */
@@ -43,7 +43,7 @@ class PrestashopApi with UiLoggy {
     final payload = await _doGet(
       '${_conf.webserviceUrl}/api/categories?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
     );
-    return CategoriesResponse.fromJson(payload).categories;
+    return CategoriesResponse.fromJson(payload).items;
   }
 
   Future<Optional<Category>> category(final int id) async {
@@ -53,7 +53,7 @@ class PrestashopApi with UiLoggy {
     );
     return payload == null
         ? Optional.absent()
-        : Optional.of(CategoriesResponse.fromJson(payload).categories.single);
+        : Optional.of(CategoriesResponse.fromJson(payload).items.single);
   }
 
   /* Manufacturers */
@@ -61,7 +61,7 @@ class PrestashopApi with UiLoggy {
     final payload = await _doGet(
       '${_conf.webserviceUrl}/api/manufacturers?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
     );
-    return ManufacturerResponse.fromJson(payload).manufacturers;
+    return ManufacturerResponse.fromJson(payload).items;
   }
 
   Future<Optional<Manufacturer>> manufacturer(final int id) async {
@@ -72,7 +72,7 @@ class PrestashopApi with UiLoggy {
     return payload == null
         ? Optional.absent()
         : Optional.of(
-            ManufacturerResponse.fromJson(payload).manufacturers.single,
+            ManufacturerResponse.fromJson(payload).items.single,
           );
   }
 
@@ -81,7 +81,7 @@ class PrestashopApi with UiLoggy {
     final payload = await _doGet(
       '${_conf.webserviceUrl}/api/orders?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
     );
-    return OrderResponse.fromJson(payload).orders;
+    return OrderResponse.fromJson(payload).items;
   }
 
   Future<Optional<Order>> order(final int id) async {
@@ -91,7 +91,7 @@ class PrestashopApi with UiLoggy {
     );
     return payload == null
         ? Optional.absent()
-        : Optional.of(OrderResponse.fromJson(payload).orders.single);
+        : Optional.of(OrderResponse.fromJson(payload).items.single);
   }
 
   /* Order details */
@@ -99,7 +99,7 @@ class PrestashopApi with UiLoggy {
     final payload = await _doGet(
       '${_conf.webserviceUrl}/api/order_details?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
     );
-    return OrderDetailsResponse.fromJson(payload).orderDetails;
+    return OrderDetailsResponse.fromJson(payload).items;
   }
 
   Future<Optional<OrderDetail>> orderDetail(final int id) async {
@@ -109,8 +109,7 @@ class PrestashopApi with UiLoggy {
     );
     return payload == null
         ? Optional.absent()
-        : Optional.of(
-            OrderDetailsResponse.fromJson(payload).orderDetails.single);
+        : Optional.of(OrderDetailsResponse.fromJson(payload).items.single);
   }
 
   /* Product */
@@ -118,7 +117,7 @@ class PrestashopApi with UiLoggy {
     final payload = await _doGet(
       '${_conf.webserviceUrl}/api/products?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
     );
-    return ProductsResponse.fromJson(payload).products;
+    return ProductsResponse.fromJson(payload).items;
   }
 
   Future<Optional<Product>> product(final int id) async {
@@ -128,7 +127,7 @@ class PrestashopApi with UiLoggy {
     );
     return payload == null
         ? Optional.absent()
-        : Optional.of(ProductsResponse.fromJson(payload).products.single);
+        : Optional.of(ProductsResponse.fromJson(payload).items.single);
   }
 
   /* Specific prices */
@@ -136,7 +135,7 @@ class PrestashopApi with UiLoggy {
     final payload = await _doGet(
       '${_conf.webserviceUrl}/api/specific_prices?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
     );
-    return SpecificPriceResponse.fromJson(payload).specificPrices;
+    return SpecificPriceResponse.fromJson(payload).items;
   }
 
   Future<Optional<SpecificPrice>> specificPrice(final int id) async {
@@ -146,8 +145,7 @@ class PrestashopApi with UiLoggy {
     );
     return payload == null
         ? Optional.absent()
-        : Optional.of(
-            SpecificPriceResponse.fromJson(payload).specificPrices.single);
+        : Optional.of(SpecificPriceResponse.fromJson(payload).items.single);
   }
 
   /* Utility methods */

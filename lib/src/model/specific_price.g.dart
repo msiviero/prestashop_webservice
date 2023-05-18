@@ -9,7 +9,7 @@ part of 'specific_price.dart';
 SpecificPriceResponse _$SpecificPriceResponseFromJson(
         Map<String, dynamic> json) =>
     SpecificPriceResponse(
-      specificPrices: (json['specific_prices'] as List<dynamic>)
+      items: (json['specific_prices'] as List<dynamic>)
           .map((e) => SpecificPrice.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,7 +17,7 @@ SpecificPriceResponse _$SpecificPriceResponseFromJson(
 Map<String, dynamic> _$SpecificPriceResponseToJson(
         SpecificPriceResponse instance) =>
     <String, dynamic>{
-      'specific_prices': instance.specificPrices,
+      'specific_prices': instance.items,
     };
 
 SpecificPrice _$SpecificPriceFromJson(Map<String, dynamic> json) =>

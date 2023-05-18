@@ -1,24 +1,31 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'customer.g.dart';
 
 @JsonSerializable()
-class CustomerResponse {
+class CustomerResponse extends Equatable {
   @JsonKey(name: 'customers')
-  final List<Customer> customers;
+  final List<Customer> items;
 
   CustomerResponse({
-    required this.customers,
+    required this.items,
   });
 
   factory CustomerResponse.fromJson(Map<String, dynamic> json) =>
       _$CustomerResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$CustomerResponseToJson(this);
+
+  @override
+  List<Object?> get props => [items];
+
+  @override
+  bool get stringify => true;
 }
 
 @JsonSerializable()
-class Customer {
+class Customer extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
@@ -42,4 +49,10 @@ class Customer {
       _$CustomerFromJson(json);
 
   Map<String, dynamic> toJson() => _$CustomerToJson(this);
+
+  @override
+  List<Object?> get props => [id];
+
+  @override
+  bool get stringify => true;
 }

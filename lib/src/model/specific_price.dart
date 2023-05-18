@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'converter.dart';
@@ -5,12 +6,12 @@ import 'converter.dart';
 part 'specific_price.g.dart';
 
 @JsonSerializable()
-class SpecificPriceResponse {
+class SpecificPriceResponse extends Equatable {
   @JsonKey(name: 'specific_prices')
-  final List<SpecificPrice> specificPrices;
+  final List<SpecificPrice> items;
 
   SpecificPriceResponse({
-    required this.specificPrices,
+    required this.items,
   });
 
   factory SpecificPriceResponse.fromJson(Map<String, dynamic> json) {
@@ -18,10 +19,16 @@ class SpecificPriceResponse {
   }
 
   Map<String, dynamic> toJson() => _$SpecificPriceResponseToJson(this);
+
+  @override
+  List<Object?> get props => [items];
+
+  @override
+  bool get stringify => true;
 }
 
 @JsonSerializable()
-class SpecificPrice {
+class SpecificPrice extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
@@ -40,9 +47,6 @@ class SpecificPrice {
   @JsonKey(name: 'to', fromJson: stringToDate)
   final DateTime to;
 
-  factory SpecificPrice.fromJson(Map<String, dynamic> json) =>
-      _$SpecificPriceFromJson(json);
-
   SpecificPrice({
     required this.productId,
     required this.reductionType,
@@ -52,10 +56,14 @@ class SpecificPrice {
     required this.id,
   });
 
+  factory SpecificPrice.fromJson(Map<String, dynamic> json) =>
+      _$SpecificPriceFromJson(json);
+
   Map<String, dynamic> toJson() => _$SpecificPriceToJson(this);
 
   @override
-  String toString() {
-    return "SpecificPrice{productId=$productId, type=$reductionType, reduction=$reduction, from=$from to=$to}";
-  }
+  List<Object?> get props => [id];
+
+  @override
+  bool get stringify => true;
 }

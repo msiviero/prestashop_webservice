@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'converter.dart';
@@ -5,22 +6,28 @@ import 'converter.dart';
 part 'order.g.dart';
 
 @JsonSerializable()
-class OrderResponse {
+class OrderResponse extends Equatable {
   @JsonKey(name: 'orders')
-  final List<Order> orders;
+  final List<Order> items;
 
   const OrderResponse({
-    required this.orders,
+    required this.items,
   });
 
   factory OrderResponse.fromJson(Map<String, dynamic> json) =>
       _$OrderResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderResponseToJson(this);
+
+  @override
+  List<Object?> get props => [items];
+
+  @override
+  bool get stringify => true;
 }
 
 @JsonSerializable()
-class Order {
+class Order extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
@@ -75,10 +82,16 @@ class Order {
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderToJson(this);
+
+  @override
+  List<Object?> get props => [id];
+
+  @override
+  bool get stringify => true;
 }
 
 @JsonSerializable()
-class Associations {
+class Associations extends Equatable {
   @JsonKey(name: 'order_rows')
   final List<OrderRow> orderRows;
 
@@ -88,10 +101,16 @@ class Associations {
       _$AssociationsFromJson(json);
 
   Map<String, dynamic> toJson() => _$AssociationsToJson(this);
+
+  @override
+  List<Object?> get props => [orderRows];
+
+  @override
+  bool get stringify => true;
 }
 
 @JsonSerializable()
-class OrderRow {
+class OrderRow extends Equatable {
   @JsonKey(name: 'id', fromJson: stringToInt)
   final int id;
 
@@ -123,4 +142,10 @@ class OrderRow {
       _$OrderRowFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderRowToJson(this);
+
+  @override
+  List<Object?> get props => [id];
+
+  @override
+  bool get stringify => true;
 }

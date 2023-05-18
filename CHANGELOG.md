@@ -4,4 +4,8 @@
 
 ## 0.2.0
 
-- Orede details
+- Order details
+
+## 0.3.0
+
+- Added equatable library and toString() override for models

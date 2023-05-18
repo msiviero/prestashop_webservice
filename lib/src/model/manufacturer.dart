@@ -1,14 +1,15 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'manufacturer.g.dart';
 
 @JsonSerializable()
-class ManufacturerResponse {
+class ManufacturerResponse extends Equatable {
   @JsonKey(name: 'manufacturers')
-  final List<Manufacturer> manufacturers;
+  final List<Manufacturer> items;
 
   ManufacturerResponse({
-    required this.manufacturers,
+    required this.items,
   });
 
   factory ManufacturerResponse.fromJson(Map<String, dynamic> json) {
@@ -16,15 +17,22 @@ class ManufacturerResponse {
   }
 
   Map<String, dynamic> toJson() => _$ManufacturerResponseToJson(this);
+
+  @override
+  List<Object?> get props => [items];
+
+  @override
+  bool get stringify => true;
 }
 
 @JsonSerializable()
-class Manufacturer {
+class Manufacturer extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
   @JsonKey(name: 'name')
   final String name;
+
   @JsonKey(name: 'active')
   final String active;
 
@@ -39,4 +47,10 @@ class Manufacturer {
   });
 
   Map<String, dynamic> toJson() => _$ManufacturerToJson(this);
+
+  @override
+  List<Object?> get props => [id];
+
+  @override
+  bool get stringify => true;
 }

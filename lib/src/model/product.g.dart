@@ -8,14 +8,14 @@ part of 'product.dart';
 
 ProductsResponse _$ProductsResponseFromJson(Map<String, dynamic> json) =>
     ProductsResponse(
-      products: (json['products'] as List<dynamic>)
+      items: (json['products'] as List<dynamic>)
           .map((e) => Product.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$ProductsResponseToJson(ProductsResponse instance) =>
     <String, dynamic>{
-      'products': instance.products,
+      'products': instance.items,
     };
 
 Product _$ProductFromJson(Map<String, dynamic> json) => Product(
