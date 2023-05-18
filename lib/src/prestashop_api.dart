@@ -95,7 +95,7 @@ class PrestashopApi with UiLoggy {
   }
 
   /* Order details */
-  Future<List<OrderDetail>> ordersDetails() async {
+  Future<List<OrderDetail>> orderDetails() async {
     final payload = await _doGet(
       '${_conf.webserviceUrl}/api/order_details?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
     );
