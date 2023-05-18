@@ -9,3 +9,7 @@
 ## 0.3.0
 
 - Added equatable library and toString() override for models
+
+## 0.3.1
+
+- Fixed optional field

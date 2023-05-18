@@ -62,7 +62,7 @@ class Order extends Equatable {
   final String? note;
 
   @JsonKey(name: 'associations')
-  final Associations associations;
+  final Associations? associations;
 
   const Order({
     required this.id,

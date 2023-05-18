@@ -30,8 +30,9 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       reference: json['reference'] as String,
       shippingNumber: json['shipping_number'] as String,
       note: json['note'] as String?,
-      associations:
-          Associations.fromJson(json['associations'] as Map<String, dynamic>),
+      associations: json['associations'] == null
+          ? null
+          : Associations.fromJson(json['associations'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
