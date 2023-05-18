@@ -1,19 +1,36 @@
 
 A dart package for reading data from prestashop webservices 
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+import 'package:http/http.dart';
+import 'package:prestashop_webservice/prestashop_webservice.dart';
+
+void main() async {
+  final api = PrestashopApi(
+      Client(),
+      PrestashopApiConfig(
+        apiKey: "your-secret-api-key",
+        webserviceUrl: "https://example.com",
+      ));
+
+  /* Multiple entities */
+  final customers = await api.customers();
+
+  for (final customer in customers) {
+    print(customer);
+  }
+
+  /* Single entity */
+  final order = await api.order(7);
+
+  print(order.orNull);
+}
+
 ```
+## Development
+This package uses the *build_runner* package to generate the json parsing implementation. Before running / compiling the code is important to run the generator. See [json_serializable package docs](https://pub.dev/packages/json_serializable#running-the-code-generator).
 
 ## Additional information and warning
 
