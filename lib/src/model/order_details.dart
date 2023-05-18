@@ -31,6 +31,18 @@ class OrderDetail extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
+  @JsonKey(name: 'product_id', fromJson: stringToInt)
+  final int productId;
+
+  @JsonKey(name: 'id_order', fromJson: stringToInt)
+  final int orderId;
+
+  @JsonKey(name: 'product_name')
+  final String productName;
+
+  @JsonKey(name: 'product_reference')
+  final String productRef;
+
   @JsonKey(name: 'product_price', fromJson: stringToDouble)
   final double price;
 
@@ -45,6 +57,10 @@ class OrderDetail extends Equatable {
     required this.price,
     required this.quantity,
     required this.id,
+    required this.productId,
+    required this.orderId,
+    required this.productName,
+    required this.productRef,
   });
 
   factory OrderDetail.fromJson(Map<String, dynamic> json) =>
@@ -53,7 +69,7 @@ class OrderDetail extends Equatable {
   Map<String, dynamic> toJson() => _$OrderDetailToJson(this);
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [orderId, productId];
 
   @override
   bool get stringify => true;
