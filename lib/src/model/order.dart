@@ -54,6 +54,9 @@ class Order {
   @JsonKey(name: 'note')
   final String? note;
 
+  @JsonKey(name: 'associations')
+  final Associations associations;
+
   const Order({
     required this.id,
     required this.customerId,
@@ -66,6 +69,7 @@ class Order {
     required this.reference,
     required this.shippingNumber,
     required this.note,
+    required this.associations,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
@@ -74,39 +78,49 @@ class Order {
 }
 
 @JsonSerializable()
-class OrderDetailsResponse {
-  @JsonKey(name: 'order_details')
-  final List<OrderDetails> items;
+class Associations {
+  @JsonKey(name: 'order_rows')
+  final List<OrderRow> orderRows;
 
-  const OrderDetailsResponse({
-    required this.items,
-  });
+  Associations({required this.orderRows});
 
-  factory OrderDetailsResponse.fromJson(Map<String, dynamic> json) =>
-      _$OrderDetailsResponseFromJson(json);
+  factory Associations.fromJson(Map<String, dynamic> json) =>
+      _$AssociationsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$OrderDetailsResponseToJson(this);
+  Map<String, dynamic> toJson() => _$AssociationsToJson(this);
 }
 
 @JsonSerializable()
-class OrderDetails {
-  @JsonKey(name: 'product_price', fromJson: stringToDouble)
-  final double price;
+class OrderRow {
+  @JsonKey(name: 'id', fromJson: stringToInt)
+  final int id;
 
-  @JsonKey(name: 'original_wholesale_price', fromJson: stringToDouble)
-  final double wholeSalePrice;
+  @JsonKey(name: 'product_id', fromJson: stringToInt)
+  final int productId;
 
   @JsonKey(name: 'product_quantity', fromJson: stringToInt)
   final int quantity;
 
-  OrderDetails({
-    required this.wholeSalePrice,
-    required this.price,
+  @JsonKey(name: 'product_reference')
+  final String productRef;
+
+  @JsonKey(name: 'product_name')
+  final String productName;
+
+  @JsonKey(name: 'product_price', fromJson: stringToDouble)
+  final double price;
+
+  OrderRow({
+    required this.productId,
     required this.quantity,
+    required this.productRef,
+    required this.productName,
+    required this.price,
+    required this.id,
   });
 
-  factory OrderDetails.fromJson(Map<String, dynamic> json) =>
-      _$OrderDetailsFromJson(json);
+  factory OrderRow.fromJson(Map<String, dynamic> json) =>
+      _$OrderRowFromJson(json);
 
-  Map<String, dynamic> toJson() => _$OrderDetailsToJson(this);
+  Map<String, dynamic> toJson() => _$OrderRowToJson(this);
 }

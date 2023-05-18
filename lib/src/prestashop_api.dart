@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:loggy/loggy.dart';
 import 'package:prestashop_webservice/prestashop_webservice.dart';
+import 'package:prestashop_webservice/src/model/order_details.dart';
 import 'package:quiver/core.dart';
 
 class PrestashopApiConfig {
@@ -91,6 +92,25 @@ class PrestashopApi with UiLoggy {
     return payload == null
         ? Optional.absent()
         : Optional.of(OrderResponse.fromJson(payload).orders.single);
+  }
+
+  /* Order details */
+  Future<List<OrderDetail>> ordersDetails() async {
+    final payload = await _doGet(
+      '${_conf.webserviceUrl}/api/order_details?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
+    );
+    return OrderDetailsResponse.fromJson(payload).orderDetails;
+  }
+
+  Future<Optional<OrderDetail>> orderDetail(final int id) async {
+    final payload = await _doGet(
+      '${_conf.webserviceUrl}/api/order_details/$id?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
+      single: true,
+    );
+    return payload == null
+        ? Optional.absent()
+        : Optional.of(
+            OrderDetailsResponse.fromJson(payload).orderDetails.single);
   }
 
   /* Product */

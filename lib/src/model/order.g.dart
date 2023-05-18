@@ -30,6 +30,8 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       reference: json['reference'] as String,
       shippingNumber: json['shipping_number'] as String,
       note: json['note'] as String?,
+      associations:
+          Associations.fromJson(json['associations'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
@@ -44,32 +46,34 @@ Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'total_paid': instance.totalPaid,
       'reference': instance.reference,
       'note': instance.note,
+      'associations': instance.associations,
     };
 
-OrderDetailsResponse _$OrderDetailsResponseFromJson(
-        Map<String, dynamic> json) =>
-    OrderDetailsResponse(
-      items: (json['order_details'] as List<dynamic>)
-          .map((e) => OrderDetails.fromJson(e as Map<String, dynamic>))
+Associations _$AssociationsFromJson(Map<String, dynamic> json) => Associations(
+      orderRows: (json['order_rows'] as List<dynamic>)
+          .map((e) => OrderRow.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$OrderDetailsResponseToJson(
-        OrderDetailsResponse instance) =>
+Map<String, dynamic> _$AssociationsToJson(Associations instance) =>
     <String, dynamic>{
-      'order_details': instance.items,
+      'order_rows': instance.orderRows,
     };
 
-OrderDetails _$OrderDetailsFromJson(Map<String, dynamic> json) => OrderDetails(
-      wholeSalePrice:
-          stringToDouble(json['original_wholesale_price'] as String),
-      price: stringToDouble(json['product_price'] as String),
+OrderRow _$OrderRowFromJson(Map<String, dynamic> json) => OrderRow(
+      productId: stringToInt(json['product_id'] as String),
       quantity: stringToInt(json['product_quantity'] as String),
+      productRef: json['product_reference'] as String,
+      productName: json['product_name'] as String,
+      price: stringToDouble(json['product_price'] as String),
+      id: stringToInt(json['id'] as String),
     );
 
-Map<String, dynamic> _$OrderDetailsToJson(OrderDetails instance) =>
-    <String, dynamic>{
-      'product_price': instance.price,
-      'original_wholesale_price': instance.wholeSalePrice,
+Map<String, dynamic> _$OrderRowToJson(OrderRow instance) => <String, dynamic>{
+      'id': instance.id,
+      'product_id': instance.productId,
       'product_quantity': instance.quantity,
+      'product_reference': instance.productRef,
+      'product_name': instance.productName,
+      'product_price': instance.price,
     };

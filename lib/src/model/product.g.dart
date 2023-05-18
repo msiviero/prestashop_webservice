@@ -23,12 +23,12 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       ean13: json['ean13'] as String,
       mpn: json['mpn'] as String,
       description: json['description_short'] as String,
-      price: (json['price'] as num).toDouble(),
+      price: stringToDouble(json['price'] as String),
       categoryId: json['id_category_default'] as String,
       id: json['id'] as int,
       active: json['active'] as String,
       manufacturerId: json['id_manufacturer'] as String,
-      lastUpdate: DateTime.parse(json['date_upd'] as String),
+      lastUpdate: stringToDate(json['date_upd'] as String),
     );
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
