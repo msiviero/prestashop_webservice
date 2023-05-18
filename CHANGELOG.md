@@ -22,6 +22,6 @@
 
 - Missing export fix
 
-## 0.4
+## 0.4.0
 
 - Added fields to order details
