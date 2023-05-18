@@ -1,0 +1,19 @@
+name: prestashop_webservice
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  http: ^0.13.6
+  json_annotation: ^4.8.1
+  loggy: ^2.0.3
+  quiver: ^3.2.1
+  
+dev_dependencies:
+  build_runner: 
+  json_serializable: ^6.7.0
+  lints: ^2.0.0
+  test: ^1.21.0
