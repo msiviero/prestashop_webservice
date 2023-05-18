@@ -17,3 +17,7 @@
 ## 0.3.2
 
 - Fixed typo
+
+## 0.3.3
+
+- Missing export fix
