@@ -29,3 +29,7 @@
 ## 0.4.1
 
 - Fixed some types conversion
+
+## 0.4.2
+
+- Added bidirectional conversion

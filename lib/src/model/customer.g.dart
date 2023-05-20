@@ -20,9 +20,9 @@ Map<String, dynamic> _$CustomerResponseToJson(CustomerResponse instance) =>
 
 Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
       id: json['id'] as int,
-      firstName: json['firstname'] as String,
-      lastName: json['lastname'] as String,
-      email: json['email'] as String,
+      firstName: json['firstname'] as String?,
+      lastName: json['lastname'] as String?,
+      email: json['email'] as String?,
     );
 
 Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{

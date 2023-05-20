@@ -37,10 +37,18 @@ class Order extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
-  @JsonKey(name: 'id_customer')
+  @JsonKey(
+    name: 'id_customer',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int customerId;
 
-  @JsonKey(name: 'date_add', fromJson: stringToDate)
+  @JsonKey(
+    name: 'date_add',
+    fromJson: JsonDate.fromJson,
+    toJson: JsonDate.toJson,
+  )
   final DateTime date;
 
   @JsonKey(name: 'payment')
@@ -49,16 +57,32 @@ class Order extends Equatable {
   @JsonKey(name: 'shipping_number')
   final String shippingNumber;
 
-  @JsonKey(name: 'total_products')
+  @JsonKey(
+    name: 'total_products',
+    fromJson: JsonDouble.fromJson,
+    toJson: JsonDouble.toJson,
+  )
   final double totalProducts;
 
-  @JsonKey(name: 'total_shipping')
+  @JsonKey(
+    name: 'total_shipping',
+    fromJson: JsonDouble.fromJson,
+    toJson: JsonDouble.toJson,
+  )
   final double totalShipping;
 
-  @JsonKey(name: 'total_discounts')
+  @JsonKey(
+    name: 'total_discounts',
+    fromJson: JsonDouble.fromJson,
+    toJson: JsonDouble.toJson,
+  )
   final double totalDiscounts;
 
-  @JsonKey(name: 'total_paid')
+  @JsonKey(
+    name: 'total_paid',
+    fromJson: JsonDouble.fromJson,
+    toJson: JsonDouble.toJson,
+  )
   final double totalPaid;
 
   @JsonKey(name: 'reference')
@@ -121,13 +145,25 @@ class Associations extends Equatable {
 class OrderRow extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
 
-  @JsonKey(name: 'id')
+  @JsonKey(
+    name: 'id',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int id;
 
-  @JsonKey(name: 'product_id')
+  @JsonKey(
+    name: 'product_id',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int productId;
 
-  @JsonKey(name: 'product_quantity')
+  @JsonKey(
+    name: 'product_quantity',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int quantity;
 
   @JsonKey(name: 'product_reference')
@@ -136,7 +172,11 @@ class OrderRow extends Equatable {
   @JsonKey(name: 'product_name')
   final String productName;
 
-  @JsonKey(name: 'product_price')
+  @JsonKey(
+    name: 'product_price',
+    fromJson: JsonDouble.fromJson,
+    toJson: JsonDouble.toJson,
+  )
   final double price;
 
   OrderRow({

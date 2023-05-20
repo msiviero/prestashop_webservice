@@ -22,11 +22,11 @@ Map<String, dynamic> _$SpecificPriceResponseToJson(
 
 SpecificPrice _$SpecificPriceFromJson(Map<String, dynamic> json) =>
     SpecificPrice(
-      productId: stringToInt(json['id_product'] as String),
+      productId: JsonInt.fromJson(json['id_product'] as String),
       reductionType: json['reduction_type'] as String,
-      reduction: stringToDouble(json['reduction'] as String),
-      from: stringToDate(json['from'] as String),
-      to: stringToDate(json['to'] as String),
+      reduction: JsonDouble.fromJson(json['reduction'] as String),
+      from: JsonDate.fromJson(json['from'] as String),
+      to: JsonDate.fromJson(json['to'] as String),
       id: json['id'] as int,
     );
 

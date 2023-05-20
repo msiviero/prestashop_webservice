@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:prestashop_webservice/src/model/converter.dart';
 
 part 'order_details.g.dart';
 
@@ -35,10 +36,18 @@ class OrderDetail extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
-  @JsonKey(name: 'product_id')
+  @JsonKey(
+    name: 'product_id',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int productId;
 
-  @JsonKey(name: 'id_order')
+  @JsonKey(
+    name: 'id_order',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int orderId;
 
   @JsonKey(name: 'product_name')
@@ -47,13 +56,25 @@ class OrderDetail extends Equatable {
   @JsonKey(name: 'product_reference')
   final String productRef;
 
-  @JsonKey(name: 'product_price')
+  @JsonKey(
+    name: 'product_price',
+    fromJson: JsonDouble.fromJson,
+    toJson: JsonDouble.toJson,
+  )
   final double price;
 
-  @JsonKey(name: 'original_wholesale_price')
+  @JsonKey(
+    name: 'original_wholesale_price',
+    fromJson: JsonDouble.fromJson,
+    toJson: JsonDouble.toJson,
+  )
   final double wholeSalePrice;
 
-  @JsonKey(name: 'product_quantity')
+  @JsonKey(
+    name: 'product_quantity',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int quantity;
 
   OrderDetail({

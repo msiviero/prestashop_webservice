@@ -44,13 +44,21 @@ class Product extends Equatable {
   @JsonKey(name: 'name')
   final String title;
 
-  @JsonKey(name: 'id_manufacturer')
-  final String manufacturerId;
+  @JsonKey(
+    name: 'id_manufacturer',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
+  final int manufacturerId;
 
   @JsonKey(name: 'description_short')
   final String description;
 
-  @JsonKey(name: 'price', fromJson: stringToDouble)
+  @JsonKey(
+    name: 'price',
+    fromJson: JsonDouble.fromJson,
+    toJson: JsonDouble.toJson,
+  )
   final double price;
 
   @JsonKey(name: 'id_category_default')
@@ -62,7 +70,11 @@ class Product extends Equatable {
   @JsonKey(name: 'mpn')
   final String mpn;
 
-  @JsonKey(name: 'date_upd', fromJson: stringToDate)
+  @JsonKey(
+    name: 'date_upd',
+    fromJson: JsonDate.fromJson,
+    toJson: JsonDate.toJson,
+  )
   final DateTime lastUpdate;
 
   Product({

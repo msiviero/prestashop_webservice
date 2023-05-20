@@ -20,13 +20,13 @@ Map<String, dynamic> _$OrderResponseToJson(OrderResponse instance) =>
 
 Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       id: json['id'] as int,
-      customerId: json['id_customer'] as int,
-      date: stringToDate(json['date_add'] as String),
+      customerId: JsonInt.fromJson(json['id_customer'] as String),
+      date: JsonDate.fromJson(json['date_add'] as String),
       payment: json['payment'] as String,
-      totalProducts: (json['total_products'] as num).toDouble(),
-      totalDiscounts: (json['total_discounts'] as num).toDouble(),
-      totalPaid: (json['total_paid'] as num).toDouble(),
-      totalShipping: (json['total_shipping'] as num).toDouble(),
+      totalProducts: JsonDouble.fromJson(json['total_products'] as String),
+      totalDiscounts: JsonDouble.fromJson(json['total_discounts'] as String),
+      totalPaid: JsonDouble.fromJson(json['total_paid'] as String),
+      totalShipping: JsonDouble.fromJson(json['total_shipping'] as String),
       reference: json['reference'] as String,
       shippingNumber: json['shipping_number'] as String,
       note: json['note'] as String?,
@@ -37,14 +37,14 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'id': instance.id,
-      'id_customer': instance.customerId,
-      'date_add': instance.date.toIso8601String(),
+      'id_customer': JsonInt.toJson(instance.customerId),
+      'date_add': JsonDate.toJson(instance.date),
       'payment': instance.payment,
       'shipping_number': instance.shippingNumber,
-      'total_products': instance.totalProducts,
-      'total_shipping': instance.totalShipping,
-      'total_discounts': instance.totalDiscounts,
-      'total_paid': instance.totalPaid,
+      'total_products': JsonDouble.toJson(instance.totalProducts),
+      'total_shipping': JsonDouble.toJson(instance.totalShipping),
+      'total_discounts': JsonDouble.toJson(instance.totalDiscounts),
+      'total_paid': JsonDouble.toJson(instance.totalPaid),
       'reference': instance.reference,
       'note': instance.note,
       'associations': instance.associations,
@@ -62,19 +62,19 @@ Map<String, dynamic> _$AssociationsToJson(Associations instance) =>
     };
 
 OrderRow _$OrderRowFromJson(Map<String, dynamic> json) => OrderRow(
-      productId: json['product_id'] as int,
-      quantity: json['product_quantity'] as int,
+      productId: JsonInt.fromJson(json['product_id'] as String),
+      quantity: JsonInt.fromJson(json['product_quantity'] as String),
       productRef: json['product_reference'] as String,
       productName: json['product_name'] as String,
-      price: (json['product_price'] as num).toDouble(),
-      id: json['id'] as int,
+      price: JsonDouble.fromJson(json['product_price'] as String),
+      id: JsonInt.fromJson(json['id'] as String),
     );
 
 Map<String, dynamic> _$OrderRowToJson(OrderRow instance) => <String, dynamic>{
-      'id': instance.id,
-      'product_id': instance.productId,
-      'product_quantity': instance.quantity,
+      'id': JsonInt.toJson(instance.id),
+      'product_id': JsonInt.toJson(instance.productId),
+      'product_quantity': JsonInt.toJson(instance.quantity),
       'product_reference': instance.productRef,
       'product_name': instance.productName,
-      'product_price': instance.price,
+      'product_price': JsonDouble.toJson(instance.price),
     };

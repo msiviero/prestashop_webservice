@@ -36,13 +36,13 @@ class Customer extends Equatable {
   final int id;
 
   @JsonKey(name: 'firstname')
-  final String firstName;
+  final String? firstName;
 
   @JsonKey(name: 'lastname')
-  final String lastName;
+  final String? lastName;
 
   @JsonKey(name: 'email')
-  final String email;
+  final String? email;
 
   Customer({
     required this.id,

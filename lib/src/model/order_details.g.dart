@@ -21,12 +21,13 @@ Map<String, dynamic> _$OrderDetailsResponseToJson(
     };
 
 OrderDetail _$OrderDetailFromJson(Map<String, dynamic> json) => OrderDetail(
-      wholeSalePrice: (json['original_wholesale_price'] as num).toDouble(),
-      price: (json['product_price'] as num).toDouble(),
-      quantity: json['product_quantity'] as int,
+      wholeSalePrice:
+          JsonDouble.fromJson(json['original_wholesale_price'] as String),
+      price: JsonDouble.fromJson(json['product_price'] as String),
+      quantity: JsonInt.fromJson(json['product_quantity'] as String),
       id: json['id'] as int,
-      productId: json['product_id'] as int,
-      orderId: json['id_order'] as int,
+      productId: JsonInt.fromJson(json['product_id'] as String),
+      orderId: JsonInt.fromJson(json['id_order'] as String),
       productName: json['product_name'] as String,
       productRef: json['product_reference'] as String,
     );
@@ -34,11 +35,11 @@ OrderDetail _$OrderDetailFromJson(Map<String, dynamic> json) => OrderDetail(
 Map<String, dynamic> _$OrderDetailToJson(OrderDetail instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'product_id': instance.productId,
-      'id_order': instance.orderId,
+      'product_id': JsonInt.toJson(instance.productId),
+      'id_order': JsonInt.toJson(instance.orderId),
       'product_name': instance.productName,
       'product_reference': instance.productRef,
-      'product_price': instance.price,
-      'original_wholesale_price': instance.wholeSalePrice,
-      'product_quantity': instance.quantity,
+      'product_price': JsonDouble.toJson(instance.price),
+      'original_wholesale_price': JsonDouble.toJson(instance.wholeSalePrice),
+      'product_quantity': JsonInt.toJson(instance.quantity),
     };

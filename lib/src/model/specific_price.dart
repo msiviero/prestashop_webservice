@@ -38,19 +38,19 @@ class SpecificPrice extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
-  @JsonKey(name: 'id_product', fromJson: stringToInt)
+  @JsonKey(name: 'id_product', fromJson: JsonInt.fromJson)
   final int productId;
 
   @JsonKey(name: 'reduction_type')
   final String reductionType;
 
-  @JsonKey(name: 'reduction', fromJson: stringToDouble)
+  @JsonKey(name: 'reduction', fromJson: JsonDouble.fromJson)
   final double reduction;
 
-  @JsonKey(name: 'from', fromJson: stringToDate)
+  @JsonKey(name: 'from', fromJson: JsonDate.fromJson)
   final DateTime from;
 
-  @JsonKey(name: 'to', fromJson: stringToDate)
+  @JsonKey(name: 'to', fromJson: JsonDate.fromJson)
   final DateTime to;
 
   SpecificPrice({
