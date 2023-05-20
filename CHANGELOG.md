@@ -25,3 +25,7 @@
 ## 0.4.0
 
 - Added fields to order details
+
+## 0.4.1
+
+- Fixed some types conversion

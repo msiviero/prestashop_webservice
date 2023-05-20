@@ -21,13 +21,12 @@ Map<String, dynamic> _$OrderDetailsResponseToJson(
     };
 
 OrderDetail _$OrderDetailFromJson(Map<String, dynamic> json) => OrderDetail(
-      wholeSalePrice:
-          stringToDouble(json['original_wholesale_price'] as String),
-      price: stringToDouble(json['product_price'] as String),
-      quantity: stringToInt(json['product_quantity'] as String),
+      wholeSalePrice: (json['original_wholesale_price'] as num).toDouble(),
+      price: (json['product_price'] as num).toDouble(),
+      quantity: json['product_quantity'] as int,
       id: json['id'] as int,
-      productId: stringToInt(json['product_id'] as String),
-      orderId: stringToInt(json['id_order'] as String),
+      productId: json['product_id'] as int,
+      orderId: json['id_order'] as int,
       productName: json['product_name'] as String,
       productRef: json['product_reference'] as String,
     );

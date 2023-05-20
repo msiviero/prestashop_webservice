@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -7,6 +9,8 @@ part 'order.g.dart';
 
 @JsonSerializable()
 class OrderResponse extends Equatable {
+  static final _encoder = JsonEncoder.withIndent('  ');
+
   @JsonKey(name: 'orders')
   final List<Order> items;
 
@@ -23,15 +27,17 @@ class OrderResponse extends Equatable {
   List<Object?> get props => [items];
 
   @override
-  bool get stringify => true;
+  String toString() => _encoder.convert(toJson());
 }
 
 @JsonSerializable()
 class Order extends Equatable {
+  static final _encoder = JsonEncoder.withIndent('  ');
+
   @JsonKey(name: 'id')
   final int id;
 
-  @JsonKey(name: 'id_customer', fromJson: stringToInt)
+  @JsonKey(name: 'id_customer')
   final int customerId;
 
   @JsonKey(name: 'date_add', fromJson: stringToDate)
@@ -43,16 +49,16 @@ class Order extends Equatable {
   @JsonKey(name: 'shipping_number')
   final String shippingNumber;
 
-  @JsonKey(name: 'total_products', fromJson: stringToDouble)
+  @JsonKey(name: 'total_products')
   final double totalProducts;
 
-  @JsonKey(name: 'total_shipping', fromJson: stringToDouble)
+  @JsonKey(name: 'total_shipping')
   final double totalShipping;
 
-  @JsonKey(name: 'total_discounts', fromJson: stringToDouble)
+  @JsonKey(name: 'total_discounts')
   final double totalDiscounts;
 
-  @JsonKey(name: 'total_paid', fromJson: stringToDouble)
+  @JsonKey(name: 'total_paid')
   final double totalPaid;
 
   @JsonKey(name: 'reference')
@@ -87,11 +93,13 @@ class Order extends Equatable {
   List<Object?> get props => [id];
 
   @override
-  bool get stringify => true;
+  String toString() => _encoder.convert(toJson());
 }
 
 @JsonSerializable()
 class Associations extends Equatable {
+  static final _encoder = JsonEncoder.withIndent('  ');
+
   @JsonKey(name: 'order_rows')
   final List<OrderRow> orderRows;
 
@@ -106,18 +114,20 @@ class Associations extends Equatable {
   List<Object?> get props => [orderRows];
 
   @override
-  bool get stringify => true;
+  String toString() => _encoder.convert(toJson());
 }
 
 @JsonSerializable()
 class OrderRow extends Equatable {
-  @JsonKey(name: 'id', fromJson: stringToInt)
+  static final _encoder = JsonEncoder.withIndent('  ');
+
+  @JsonKey(name: 'id')
   final int id;
 
-  @JsonKey(name: 'product_id', fromJson: stringToInt)
+  @JsonKey(name: 'product_id')
   final int productId;
 
-  @JsonKey(name: 'product_quantity', fromJson: stringToInt)
+  @JsonKey(name: 'product_quantity')
   final int quantity;
 
   @JsonKey(name: 'product_reference')
@@ -126,7 +136,7 @@ class OrderRow extends Equatable {
   @JsonKey(name: 'product_name')
   final String productName;
 
-  @JsonKey(name: 'product_price', fromJson: stringToDouble)
+  @JsonKey(name: 'product_price')
   final double price;
 
   OrderRow({
@@ -147,5 +157,5 @@ class OrderRow extends Equatable {
   List<Object?> get props => [id];
 
   @override
-  bool get stringify => true;
+  String toString() => _encoder.convert(toJson());
 }

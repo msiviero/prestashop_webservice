@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -5,6 +7,8 @@ part 'customer.g.dart';
 
 @JsonSerializable()
 class CustomerResponse extends Equatable {
+  static final _encoder = JsonEncoder.withIndent('  ');
+
   @JsonKey(name: 'customers')
   final List<Customer> items;
 
@@ -21,11 +25,13 @@ class CustomerResponse extends Equatable {
   List<Object?> get props => [items];
 
   @override
-  bool get stringify => true;
+  String toString() => _encoder.convert(toJson());
 }
 
 @JsonSerializable()
 class Customer extends Equatable {
+  static final _encoder = JsonEncoder.withIndent('  ');
+
   @JsonKey(name: 'id')
   final int id;
 
@@ -54,5 +60,5 @@ class Customer extends Equatable {
   List<Object?> get props => [id];
 
   @override
-  bool get stringify => true;
+  String toString() => _encoder.convert(toJson());
 }

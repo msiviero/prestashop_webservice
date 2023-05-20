@@ -1,12 +1,14 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'converter.dart';
 
 part 'order_details.g.dart';
 
 @JsonSerializable()
 class OrderDetailsResponse extends Equatable {
+  static final _encoder = JsonEncoder.withIndent('  ');
+
   @JsonKey(name: 'order_details')
   final List<OrderDetail> items;
 
@@ -23,18 +25,20 @@ class OrderDetailsResponse extends Equatable {
   List<Object?> get props => [items];
 
   @override
-  bool get stringify => true;
+  String toString() => _encoder.convert(toJson());
 }
 
 @JsonSerializable()
 class OrderDetail extends Equatable {
+  static final _encoder = JsonEncoder.withIndent('  ');
+
   @JsonKey(name: 'id')
   final int id;
 
-  @JsonKey(name: 'product_id', fromJson: stringToInt)
+  @JsonKey(name: 'product_id')
   final int productId;
 
-  @JsonKey(name: 'id_order', fromJson: stringToInt)
+  @JsonKey(name: 'id_order')
   final int orderId;
 
   @JsonKey(name: 'product_name')
@@ -43,13 +47,13 @@ class OrderDetail extends Equatable {
   @JsonKey(name: 'product_reference')
   final String productRef;
 
-  @JsonKey(name: 'product_price', fromJson: stringToDouble)
+  @JsonKey(name: 'product_price')
   final double price;
 
-  @JsonKey(name: 'original_wholesale_price', fromJson: stringToDouble)
+  @JsonKey(name: 'original_wholesale_price')
   final double wholeSalePrice;
 
-  @JsonKey(name: 'product_quantity', fromJson: stringToInt)
+  @JsonKey(name: 'product_quantity')
   final int quantity;
 
   OrderDetail({
@@ -72,5 +76,5 @@ class OrderDetail extends Equatable {
   List<Object?> get props => [orderId, productId];
 
   @override
-  bool get stringify => true;
+  String toString() => _encoder.convert(toJson());
 }
