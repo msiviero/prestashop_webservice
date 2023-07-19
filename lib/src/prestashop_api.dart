@@ -75,11 +75,20 @@ class PrestashopApi with UiLoggy {
           );
   }
 
+  /* Suppliers order states */
+  Future<List<SupplyOrderState>> supplyOrderStates() async {
+    final payload = await _doGet(
+      '${_conf.webserviceUrl}/api/supply_order_states?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
+    );
+    return SupplyOrderStateResponse.fromJson(payload).items;
+  }
+
   /* Orders */
   Future<List<Order>> orders() async {
     final payload = await _doGet(
       '${_conf.webserviceUrl}/api/orders?ws_key=${_conf.apiKey}&output_format=JSON&display=full',
     );
+
     return OrderResponse.fromJson(payload).items;
   }
 
