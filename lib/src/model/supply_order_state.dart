@@ -94,7 +94,7 @@ class SupplyOrderState extends Equatable {
   Map<String, dynamic> toJson() => _$SupplyOrderStateToJson(this);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [id];
 
   @override
   String toString() => _encoder.convert(toJson());
