@@ -10,7 +10,7 @@ part 'order_state.g.dart';
 class OrderStateResponse extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
 
-  @JsonKey(name: 'supply_order_states')
+  @JsonKey(name: 'order_states')
   final List<OrderState> items;
 
   const OrderStateResponse({
@@ -51,14 +51,8 @@ class OrderState extends Equatable {
   final int hidden;
 
   @JsonKey(
-      name: 'send_enamil', fromJson: JsonInt.fromJson, toJson: JsonInt.toJson)
+      name: 'send_email', fromJson: JsonInt.fromJson, toJson: JsonInt.toJson)
   final int sendEmail;
-
-  @JsonKey(
-      name: 'pending_receipt',
-      fromJson: JsonInt.fromJson,
-      toJson: JsonInt.toJson)
-  final int pendingReceipt;
 
   @JsonKey(
     name: 'module_name',
@@ -134,7 +128,6 @@ class OrderState extends Equatable {
     required this.delivery,
     required this.hidden,
     required this.sendEmail,
-    required this.pendingReceipt,
     required this.moduleName,
     required this.invoice,
     required this.color,

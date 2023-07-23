@@ -8,22 +8,21 @@ part of 'order_state.dart';
 
 OrderStateResponse _$OrderStateResponseFromJson(Map<String, dynamic> json) =>
     OrderStateResponse(
-      items: (json['supply_order_states'] as List<dynamic>)
+      items: (json['order_states'] as List<dynamic>)
           .map((e) => OrderState.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$OrderStateResponseToJson(OrderStateResponse instance) =>
     <String, dynamic>{
-      'supply_order_states': instance.items,
+      'order_states': instance.items,
     };
 
 OrderState _$OrderStateFromJson(Map<String, dynamic> json) => OrderState(
       id: json['id'] as int,
       delivery: JsonInt.fromJson(json['delivery'] as String),
       hidden: JsonInt.fromJson(json['hidden'] as String),
-      sendEmail: JsonInt.fromJson(json['send_enamil'] as String),
-      pendingReceipt: JsonInt.fromJson(json['pending_receipt'] as String),
+      sendEmail: JsonInt.fromJson(json['send_email'] as String),
       moduleName: json['module_name'] as String,
       invoice: JsonInt.fromJson(json['invoice'] as String),
       color: json['color'] as String,
@@ -42,8 +41,7 @@ Map<String, dynamic> _$OrderStateToJson(OrderState instance) =>
       'id': instance.id,
       'delivery': JsonInt.toJson(instance.delivery),
       'hidden': JsonInt.toJson(instance.hidden),
-      'send_enamil': JsonInt.toJson(instance.sendEmail),
-      'pending_receipt': JsonInt.toJson(instance.pendingReceipt),
+      'send_email': JsonInt.toJson(instance.sendEmail),
       'module_name': instance.moduleName,
       'invoice': JsonInt.toJson(instance.invoice),
       'color': instance.color,
