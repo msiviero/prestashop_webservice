@@ -70,6 +70,9 @@ class Product extends Equatable {
   @JsonKey(name: 'mpn')
   final String mpn;
 
+  @JsonKey(name: 'reference')
+  final String reference;
+
   @JsonKey(
     name: 'date_upd',
     fromJson: JsonDate.fromJson,
@@ -81,6 +84,7 @@ class Product extends Equatable {
     required this.title,
     required this.ean13,
     required this.mpn,
+    required this.reference,
     required this.description,
     required this.price,
     required this.categoryId,

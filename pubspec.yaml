@@ -1,6 +1,6 @@
 name: prestashop_webservice
 description: A dart package for reading data from prestashop webservices 
-version: 0.5.0
+version: 0.6.0
 repository: https://github.com/msiviero/prestashop_webservice
 topics:
   - api

@@ -51,13 +51,17 @@ class SupplyOrderState extends Equatable {
   final int editable;
 
   @JsonKey(
-      name: 'receipt_state', fromJson: JsonInt.fromJson, toJson: JsonInt.toJson)
+    name: 'receipt_state',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int receiptState;
 
   @JsonKey(
-      name: 'pending_receipt',
-      fromJson: JsonInt.fromJson,
-      toJson: JsonInt.toJson)
+    name: 'pending_receipt',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int pendingReceipt;
 
   @JsonKey(

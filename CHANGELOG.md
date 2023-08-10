@@ -42,3 +42,7 @@
 ## 0.5.0
 
 - Added api to close the underlying http connection
+
+## 0.6.0
+
+- Added missing field to product

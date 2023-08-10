@@ -51,7 +51,10 @@ class OrderState extends Equatable {
   final int hidden;
 
   @JsonKey(
-      name: 'send_email', fromJson: JsonInt.fromJson, toJson: JsonInt.toJson)
+    name: 'send_email',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
   final int sendEmail;
 
   @JsonKey(
