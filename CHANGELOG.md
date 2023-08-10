@@ -36,5 +36,9 @@
 
 ## 0.4.3
 
-- merged extrnal contributions
+- merged external contributions
 - Fixed http package version
+
+## 0.5.0
+
+- Added api to close the underlying http connection

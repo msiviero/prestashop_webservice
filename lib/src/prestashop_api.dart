@@ -19,6 +19,8 @@ class PrestashopApi with UiLoggy {
 
   PrestashopApi(this._http, this._conf);
 
+  void close() => _http.close();
+
   /* Customers */
   Future<List<Customer>> customers() async {
     final payload = await _doGet(
