@@ -33,3 +33,7 @@
 ## 0.4.2
 
 - Added bidirectional conversion
+
+## 0.4.3
+
+- Fixed http package version
