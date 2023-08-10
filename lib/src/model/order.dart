@@ -94,6 +94,13 @@ class Order extends Equatable {
   @JsonKey(name: 'associations')
   final Associations? associations;
 
+  @JsonKey(
+    name: 'current_state',
+    fromJson: JsonInt.fromJson,
+    toJson: JsonInt.toJson,
+  )
+  final int currentState;
+
   const Order({
     required this.id,
     required this.customerId,
@@ -107,6 +114,7 @@ class Order extends Equatable {
     required this.shippingNumber,
     required this.note,
     required this.associations,
+    required this.currentState,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);

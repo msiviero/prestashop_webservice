@@ -33,6 +33,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       associations: json['associations'] == null
           ? null
           : Associations.fromJson(json['associations'] as Map<String, dynamic>),
+      currentState: JsonInt.fromJson(json['current_state'] as String),
     );
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
@@ -48,6 +49,7 @@ Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'reference': instance.reference,
       'note': instance.note,
       'associations': instance.associations,
+      'current_state': JsonInt.toJson(instance.currentState),
     };
 
 Associations _$AssociationsFromJson(Map<String, dynamic> json) => Associations(
