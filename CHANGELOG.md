@@ -36,4 +36,5 @@
 
 ## 0.4.3
 
+- merged extrnal contributions
 - Fixed http package version
