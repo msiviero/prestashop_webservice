@@ -5,6 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'category.g.dart';
 
+// response for category
 @JsonSerializable()
 class CategoriesResponse extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
@@ -29,6 +30,7 @@ class CategoriesResponse extends Equatable {
   String toString() => _encoder.convert(toJson());
 }
 
+// entity for category
 @JsonSerializable()
 class Category extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');

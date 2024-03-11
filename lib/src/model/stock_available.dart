@@ -3,15 +3,16 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'converter.dart';
+
 part 'stock_available.g.dart';
 
-//https://store.ambers.place/api/stock_availables?ws_key=YZUUQ8DQYK2P523G78SLX557QZU5JV3P&output_format=JSON&display=full
-
+// response for available stocks
 @JsonSerializable()
 class StockAvailableResponse extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
 
-  @JsonKey(name: 'categories')
+  @JsonKey(name: 'stock_availables')
   final List<StockAvailable> items;
 
   StockAvailableResponse({
@@ -31,6 +32,7 @@ class StockAvailableResponse extends Equatable {
   String toString() => _encoder.convert(toJson());
 }
 
+// entity for available stocks
 @JsonSerializable()
 class StockAvailable extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
@@ -38,8 +40,16 @@ class StockAvailable extends Equatable {
   @JsonKey(name: 'id')
   final int id;
 
+  @JsonKey(name: 'id_product', fromJson: JsonInt.fromJson)
+  final int productId;
+
+  @JsonKey(name: 'quantity', fromJson: JsonInt.fromJson)
+  final int quantity;
+
   StockAvailable({
     required this.id,
+    required this.productId,
+    required this.quantity,
   });
 
   factory StockAvailable.fromJson(Map<String, dynamic> json) {

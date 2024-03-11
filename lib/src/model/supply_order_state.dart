@@ -6,6 +6,7 @@ import 'package:prestashop_webservice/src/model/converter.dart';
 
 part 'supply_order_state.g.dart';
 
+// response for supply order state
 @JsonSerializable()
 class SupplyOrderStateResponse extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
@@ -29,6 +30,7 @@ class SupplyOrderStateResponse extends Equatable {
   String toString() => _encoder.convert(toJson());
 }
 
+// entity for supply order state
 @JsonSerializable()
 class SupplyOrderState extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');

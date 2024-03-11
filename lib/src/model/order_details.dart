@@ -6,6 +6,7 @@ import 'package:prestashop_webservice/src/model/converter.dart';
 
 part 'order_details.g.dart';
 
+// response for order details
 @JsonSerializable()
 class OrderDetailsResponse extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
@@ -29,6 +30,7 @@ class OrderDetailsResponse extends Equatable {
   String toString() => _encoder.convert(toJson());
 }
 
+// entity for specific detail
 @JsonSerializable()
 class OrderDetail extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');

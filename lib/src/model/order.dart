@@ -7,6 +7,7 @@ import 'converter.dart';
 
 part 'order.g.dart';
 
+// response for orders
 @JsonSerializable()
 class OrderResponse extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
@@ -30,6 +31,7 @@ class OrderResponse extends Equatable {
   String toString() => _encoder.convert(toJson());
 }
 
+// entity for order
 @JsonSerializable()
 class Order extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');

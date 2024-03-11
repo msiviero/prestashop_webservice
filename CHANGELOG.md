@@ -46,3 +46,7 @@
 ## 0.6.0
 
 - Added missing field to product
+
+## 0.7.0
+
+- Added available stocks endpoint

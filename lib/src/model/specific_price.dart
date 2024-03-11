@@ -7,6 +7,7 @@ import 'converter.dart';
 
 part 'specific_price.g.dart';
 
+// response for specific price
 @JsonSerializable()
 class SpecificPriceResponse extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
@@ -31,6 +32,7 @@ class SpecificPriceResponse extends Equatable {
   String toString() => _encoder.convert(toJson());
 }
 
+// entity for specific price
 @JsonSerializable()
 class SpecificPrice extends Equatable {
   static final _encoder = JsonEncoder.withIndent('  ');
