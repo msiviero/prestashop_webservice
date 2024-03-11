@@ -50,3 +50,7 @@
 ## 0.7.0
 
 - Added available stocks endpoint
+
+## 0.7.1
+
+- Added missing generated classes

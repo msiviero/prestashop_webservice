@@ -3,7 +3,7 @@ description: |
   A dart package for reading data from prestashop webservices.
   The service is basically a typed client for the prestashop webservice api.
 
-version: 0.7.0
+version: 0.7.1
 repository: https://github.com/msiviero/prestashop_webservice
 topics:
   - api
